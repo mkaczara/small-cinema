@@ -2,11 +2,16 @@ package pl.mkaczara.smallcinema.review.repository.entity
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 
 @Entity
 class Review(
-        @Id @GeneratedValue var id: Long?,
+        @Id
+        @SequenceGenerator(name = "REVIEW_SEQUENCE", sequenceName = "REVIEW_ID_SEQ", initialValue = 1, allocationSize = 1)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REVIEW_SEQUENCE")
+        var id: Long?,
         var movieId: Long,
         var rating: Int
 ) {
