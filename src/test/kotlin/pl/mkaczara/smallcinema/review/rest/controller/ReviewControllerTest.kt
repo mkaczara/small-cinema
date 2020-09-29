@@ -1,4 +1,4 @@
-package pl.mkaczara.smallcinema.rest.controller
+package pl.mkaczara.smallcinema.review.rest.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Test
@@ -7,10 +7,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.post
-import pl.mkaczara.smallcinema.rest.model.MovieRatingDTO
+import pl.mkaczara.smallcinema.review.rest.model.ReviewDTO
 
-@WebMvcTest(MovieController::class)
-class MovieControllerTest {
+@WebMvcTest(ReviewController::class)
+class ReviewControllerTest {
 
     @Autowired
     lateinit var mockMvc: MockMvc
@@ -19,11 +19,11 @@ class MovieControllerTest {
     lateinit var mapper: ObjectMapper
 
     @Test
-    fun `should process movie rating request`() {
-        val input = MovieRatingDTO(1L, 5);
-        val expectation = MovieRatingDTO(1L, 5);
+    fun `should process add movie review request`() {
+        val input = ReviewDTO(1L, 5);
+        val expectation = ReviewDTO(1L, 5);
 
-        mockMvc.post("/api/v1/movie/rating") {
+        mockMvc.post("/api/v1/review") {
             contentType = MediaType.APPLICATION_JSON
             content = mapper.writeValueAsString(input)
             accept = MediaType.APPLICATION_JSON

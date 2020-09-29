@@ -1,4 +1,4 @@
-package pl.mkaczara.smallcinema.rest.config
+package pl.mkaczara.smallcinema.common.rest.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -15,7 +15,7 @@ class SwaggerConfiguration {
     @Bean
     fun api(): Docket = Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.any())
+            .apis(RequestHandlerSelectors.basePackage("pl.mkaczara"))
             .paths(PathSelectors.any())
             .build()
 }
