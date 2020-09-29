@@ -3,9 +3,10 @@ package pl.mkaczara.smallcinema.common.rest.model
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDateTime
 
-class ErrorResponse(val message: String?,
-                    val code: String,
-                    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss") val timestamp: LocalDateTime
+class ErrorResponse(
+        val message: String?,
+        val code: String,
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss") val timestamp: LocalDateTime
 ) {
 
     override fun equals(other: Any?): Boolean {

@@ -1,11 +1,14 @@
-package pl.mkaczara.smallcinema.review.rest.model
+package pl.mkaczara.smallcinema.review.repository.entity
 
-import io.swagger.annotations.ApiModelProperty
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
-class ReviewDTO(
-        @ApiModelProperty("The auto-generated review id") val id: Long?,
-        @ApiModelProperty("The movie id", required = true) val movieId: Long,
-        @ApiModelProperty("The movie rating", required = true) val rating: Int
+@Entity
+class Review(
+        @Id @GeneratedValue var id: Long?,
+        var movieId: Long,
+        var rating: Int
 ) {
     constructor(movieId: Long, rating: Int) : this(null, movieId, rating)
 
@@ -13,7 +16,7 @@ class ReviewDTO(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as ReviewDTO
+        other as Review
 
         if (id != other.id) return false
         if (movieId != other.movieId) return false
@@ -29,4 +32,3 @@ class ReviewDTO(
         return result
     }
 }
-

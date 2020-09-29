@@ -17,6 +17,6 @@ class BasicRestExceptionHandler : ResponseEntityExceptionHandler() {
     @ExceptionHandler(Exception::class)
     fun handleGenericException(ex: Exception): ResponseEntity<ErrorResponse> {
         val errorResponse = ErrorResponse(ex.message, HttpStatus.INTERNAL_SERVER_ERROR.name, LocalDateTime.now())
-        return ResponseEntity(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        return ResponseEntity(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }
