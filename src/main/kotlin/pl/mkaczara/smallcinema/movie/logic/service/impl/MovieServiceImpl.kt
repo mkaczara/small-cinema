@@ -20,7 +20,7 @@ class MovieServiceImpl(
 
     override fun getAll(): Collection<Movie> {
         val allMovies = HashSet<Movie>()
-        movieRepository.findAll().forEach(Consumer { movie -> allMovies.add(movie) })
+        movieRepository.findAll().forEach { movie -> allMovies.add(movie) }
         return allMovies
     }
 

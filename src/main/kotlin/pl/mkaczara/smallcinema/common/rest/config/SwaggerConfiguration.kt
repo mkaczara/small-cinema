@@ -18,6 +18,7 @@ class SwaggerConfiguration {
     @Bean
     fun api(): Docket =
             Docket(DocumentationType.SWAGGER_2)
+                    .useDefaultResponseMessages(false)
                     .select()
                     .apis(RequestHandlerSelectors.basePackage("pl.mkaczara"))
                     .paths(PathSelectors.any())
