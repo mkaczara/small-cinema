@@ -33,4 +33,9 @@ class MovieDetailsDTO(
         result = 31 * result + runtime.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "MovieDetailsDTO(title='$title', description='$description', releaseDate=$releaseDate, imdbRating=$imdbRating, runtime='$runtime')"
+    }
+
 }

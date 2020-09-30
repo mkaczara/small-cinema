@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import pl.mkaczara.smallcinema.review.repository.entity.Review
 
 @DataJpaTest
-class ReviewRepositoryTest @Autowired constructor(
+class ReviewRepositoryIT @Autowired constructor(
         val entityManager: TestEntityManager,
         val reviewRepository: ReviewRepository
 ) {

@@ -18,7 +18,7 @@ import pl.mkaczara.smallcinema.review.rest.service.RestReviewService
 
 @WebMvcTest(ReviewController::class)
 @ExtendWith(MockKExtension::class)
-class ReviewControllerTest {
+class ReviewControllerIT {
 
     @Autowired
     lateinit var mockMvc: MockMvc

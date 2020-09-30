@@ -23,4 +23,9 @@ class AvgRatingDTO(
         result = 31 * result + avgRating.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "AvgRatingDTO(movieId=$movieId, avgRating=$avgRating)"
+    }
+
 }

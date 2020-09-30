@@ -23,7 +23,7 @@ import java.util.Optional
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class MovieControllerTest {
+class MovieControllerIT {
 
     @Autowired
     lateinit var mockMvc: MockMvc

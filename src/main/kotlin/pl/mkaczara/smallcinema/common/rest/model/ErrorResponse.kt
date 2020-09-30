@@ -28,4 +28,9 @@ class ErrorResponse(
         result = 31 * result + timestamp.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "ErrorResponse(message=$message, code='$code', timestamp=$timestamp)"
+    }
+
 }

@@ -36,4 +36,9 @@ class Review(
         result = 31 * result + rating
         return result
     }
+
+    override fun toString(): String {
+        return "Review(id=$id, movieId=$movieId, rating=$rating)"
+    }
+
 }

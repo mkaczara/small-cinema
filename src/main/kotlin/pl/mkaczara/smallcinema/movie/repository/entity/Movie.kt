@@ -36,4 +36,10 @@ class Movie(
         result = 31 * result + imdbId.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "Movie(id=$id, title='$title', imdbId='$imdbId')"
+    }
+
+
 }
