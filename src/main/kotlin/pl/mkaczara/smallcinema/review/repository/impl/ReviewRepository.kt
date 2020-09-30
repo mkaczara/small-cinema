@@ -7,6 +7,6 @@ import pl.mkaczara.smallcinema.review.repository.entity.Review
 
 interface ReviewRepository : CrudRepository<Review, Long> {
 
-    @Query("SELECT AVG(r.rating) FROM Review r WHERE r.movieId = :movieId")
+    @Query("SELECT coalesce(AVG(r.rating), 0) FROM Review r WHERE r.movieId = :movieId")
     fun getAvgRating(@Param("movieId") movieId: Long): Double
 }

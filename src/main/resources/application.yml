@@ -16,6 +16,11 @@ spring:
     url: "jdbc:h2:mem:small_cinema_db"
     username: "small_cinema_db_user"
     password: "123sc456"
+  security:
+    user:
+      name: "admin"
+      password: "123sc456"
+      roles: "admin"
 
 #Small-cinema properties
 small-cinema:

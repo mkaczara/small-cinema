@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.post
@@ -33,6 +35,7 @@ class ScheduleAdminControllerIT {
     lateinit var scheduleRepository: ScheduleRepository
 
     @Test
+    @WithMockUser(roles = ["admin"])
     fun `should add schedule`() {
         val dayOfWeek = 1
         val time = LocalTime.parse("12:00")
@@ -48,6 +51,7 @@ class ScheduleAdminControllerIT {
             content = mapper.writeValueAsString(inputScheduleDTO)
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
+            authenticated()
             status { isOk }
             content { contentType(MediaType.APPLICATION_JSON) }
             content { json(mapper.writeValueAsString(expectation)) }
@@ -55,6 +59,7 @@ class ScheduleAdminControllerIT {
     }
 
     @Test
+    @WithMockUser(roles = ["admin"])
     fun `should update schedule`() {
         val dayOfWeek = 1
         val time = LocalTime.parse("12:00")
@@ -69,6 +74,7 @@ class ScheduleAdminControllerIT {
             content = mapper.writeValueAsString(inputScheduleDTO)
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
+            authenticated()
             status { isOk }
             content { contentType(MediaType.APPLICATION_JSON) }
             content { json(mapper.writeValueAsString(expectation)) }
@@ -76,6 +82,7 @@ class ScheduleAdminControllerIT {
     }
 
     @Test
+    @WithMockUser(roles = ["admin"])
     fun `should delete schedule`() {
         val scheduleId = 122L
         val inputScheduleDTO = ScheduleDTO(scheduleId, 2L, 1, "12:00", BigDecimal.valueOf(24), BigDecimal.valueOf(12))
@@ -88,6 +95,7 @@ class ScheduleAdminControllerIT {
             contentType = MediaType.APPLICATION_JSON
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
+            authenticated()
             status { isOk }
             content { contentType(MediaType.APPLICATION_JSON) }
             content { json(mapper.writeValueAsString(expectation)) }
