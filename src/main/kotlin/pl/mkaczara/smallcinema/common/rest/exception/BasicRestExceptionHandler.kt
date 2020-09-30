@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import pl.mkaczara.smallcinema.common.rest.model.ErrorResponse
 import java.time.LocalDateTime
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
+@Order(Ordered.HIGHEST_PRECEDENCE + 1)
 @ControllerAdvice
 class BasicRestExceptionHandler : ResponseEntityExceptionHandler() {
 

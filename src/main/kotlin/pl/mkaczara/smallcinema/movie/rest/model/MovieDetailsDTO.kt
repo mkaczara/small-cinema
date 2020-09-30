@@ -1,19 +1,20 @@
-package pl.mkaczara.smallcinema.movie.logic.model
+package pl.mkaczara.smallcinema.movie.rest.model
 
+import io.swagger.annotations.ApiModelProperty
 import java.time.LocalDate
 
-class MovieDetails(
-        val title: String,
-        val description: String,
-        val releaseDate: LocalDate,
-        val imdbRating: Float,
-        val runtime: String
+class MovieDetailsDTO(
+        @ApiModelProperty("The movie title", required = true) val title: String,
+        @ApiModelProperty("The movie description", required = true) val description: String,
+        @ApiModelProperty("The movie release date", required = true) val releaseDate: LocalDate,
+        @ApiModelProperty("The movie rating in IMDb", required = true) val imdbRating: Float,
+        @ApiModelProperty("The movie runtime", required = true) val runtime: String
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as MovieDetails
+        other as MovieDetailsDTO
 
         if (title != other.title) return false
         if (description != other.description) return false

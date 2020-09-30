@@ -4,5 +4,5 @@ import pl.mkaczara.smallcinema.movie.logic.model.OmdbMovieDetails
 
 interface OmdbApiService {
 
-    fun fetchMovieDetails(movieId: Long): OmdbMovieDetails?
+    fun fetchMovieDetails(ombdbMovieId: String): OmdbMovieDetails?
 }

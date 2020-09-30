@@ -1,6 +1,8 @@
 package pl.mkaczara.smallcinema.movie.logic.service.impl
 
 import org.springframework.stereotype.Service
+import pl.mkaczara.smallcinema.movie.logic.exception.MovieDetailsNotFoundException
+import pl.mkaczara.smallcinema.movie.logic.exception.MovieNotFoundException
 import pl.mkaczara.smallcinema.movie.logic.mapper.MovieDetailsMapper
 import pl.mkaczara.smallcinema.movie.logic.model.MovieDetails
 import pl.mkaczara.smallcinema.movie.logic.service.MovieService
@@ -23,11 +25,14 @@ class MovieServiceImpl(
     }
 
     override fun getDetails(movieId: Long): MovieDetails {
-        val omdbMovieDetails = omdbApiService.fetchMovieDetails(movieId)
-        if (omdbMovieDetails != null) {
-            return movieDetailsMapper.map(omdbMovieDetails)
+        val movieById = movieRepository.findById(movieId)
+        if (movieById.isPresent) {
+            val omdbMovieDetails = omdbApiService.fetchMovieDetails(movieById.get().imdbId)
+            if (omdbMovieDetails != null) {
+                return movieDetailsMapper.map(omdbMovieDetails)
+            }
+            throw MovieDetailsNotFoundException("Movie details for id $movieId not found")
         }
-        // TODO: create dedicated exception
-        throw Exception("Movie details not found")
+        throw MovieNotFoundException("Movie for id $movieId not found")
     }
 }
