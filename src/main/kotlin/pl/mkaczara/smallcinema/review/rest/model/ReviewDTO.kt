@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty
 class ReviewDTO(
         @ApiModelProperty("The auto-generated review id") val id: Long?,
         @ApiModelProperty("The movie id", required = true) val movieId: Long,
-        @ApiModelProperty("The movie rating", required = true) val rating: Int
+        @ApiModelProperty("The movie rating (1-5)", required = true) val rating: Int
 ) {
     constructor(movieId: Long, rating: Int) : this(null, movieId, rating)
 

@@ -13,8 +13,13 @@ class RestReviewServiceImpl(
         val reviewDTOMapper: ReviewDTOMapper
 ) : RestReviewService {
 
-    override fun save(reviewDTO: ReviewDTO): ReviewDTO =
-            reviewDTOMapper.map(reviewRepository.save(reviewDTOMapper.map(reviewDTO)))
+    override fun save(reviewDTO: ReviewDTO): ReviewDTO {
+        if (reviewDTO.id != null) {
+            throw IllegalArgumentException("Unable to save movie review with non-null id")
+        }
+
+        return reviewDTOMapper.map(reviewRepository.save(reviewDTOMapper.map(reviewDTO)))
+    }
 
     override fun getAvgRating(movieId: Long): AvgRatingDTO =
             AvgRatingDTO(movieId, reviewRepository.getAvgRating(movieId))

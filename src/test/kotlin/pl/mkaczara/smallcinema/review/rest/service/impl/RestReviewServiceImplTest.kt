@@ -5,6 +5,7 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import pl.mkaczara.smallcinema.review.repository.entity.Review
@@ -38,6 +39,15 @@ class RestReviewServiceImplTest {
         val result = reviewService.save(inputReviewDTO)
 
         assertEquals(expectation, result)
+    }
+
+    @Test
+    fun `should throw when review to save has non-null id`() {
+        val inputReviewDTO = ReviewDTO(5L, 1L, 2)
+
+        assertThrows(IllegalArgumentException::class.java) {
+            reviewService.save(inputReviewDTO)
+        }
     }
 
     @Test

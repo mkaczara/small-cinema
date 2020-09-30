@@ -9,7 +9,6 @@ import pl.mkaczara.smallcinema.movie.logic.service.MovieService
 import pl.mkaczara.smallcinema.movie.logic.service.OmdbApiService
 import pl.mkaczara.smallcinema.movie.repository.entity.Movie
 import pl.mkaczara.smallcinema.movie.repository.impl.MovieRepository
-import java.util.function.Consumer
 
 @Service
 class MovieServiceImpl(
@@ -25,9 +24,9 @@ class MovieServiceImpl(
     }
 
     override fun getDetails(movieId: Long): MovieDetails {
-        val movieById = movieRepository.findById(movieId)
-        if (movieById.isPresent) {
-            val omdbMovieDetails = omdbApiService.fetchMovieDetails(movieById.get().imdbId)
+        val movieByIdOpt = movieRepository.findById(movieId)
+        if (movieByIdOpt.isPresent) {
+            val omdbMovieDetails = omdbApiService.fetchMovieDetails(movieByIdOpt.get().imdbId)
             if (omdbMovieDetails != null) {
                 return movieDetailsMapper.map(omdbMovieDetails)
             }
