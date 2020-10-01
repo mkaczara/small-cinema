@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "pl.mkaczara"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1-RELEASE"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
