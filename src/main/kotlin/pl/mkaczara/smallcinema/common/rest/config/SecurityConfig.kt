@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
 
-
 @Configuration
 @EnableWebSecurity
 class SecurityConfig : WebSecurityConfigurerAdapter() {
@@ -18,7 +17,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/api/v1/admin/**").hasRole("admin")
+                .antMatchers("/api/v1/admin/**").authenticated()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

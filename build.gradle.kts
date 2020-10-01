@@ -48,8 +48,8 @@ tasks.withType<KotlinCompile> {
 }
 
 docker {
-    val build = tasks.build.get();
-    val bootJar = tasks.bootJar.get();
+    val build = tasks.build.get()
+    val bootJar = tasks.bootJar.get()
 
     dependsOn(build)
 

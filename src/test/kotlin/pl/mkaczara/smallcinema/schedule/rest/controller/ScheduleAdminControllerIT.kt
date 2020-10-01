@@ -35,7 +35,7 @@ class ScheduleAdminControllerIT {
     lateinit var scheduleRepository: ScheduleRepository
 
     @Test
-    @WithMockUser(roles = ["admin"])
+    @WithMockUser
     fun `should add schedule`() {
         val dayOfWeek = 1
         val time = LocalTime.parse("12:00")
@@ -59,7 +59,7 @@ class ScheduleAdminControllerIT {
     }
 
     @Test
-    @WithMockUser(roles = ["admin"])
+    @WithMockUser
     fun `should update schedule`() {
         val dayOfWeek = 1
         val time = LocalTime.parse("12:00")
@@ -82,7 +82,7 @@ class ScheduleAdminControllerIT {
     }
 
     @Test
-    @WithMockUser(roles = ["admin"])
+    @WithMockUser
     fun `should delete schedule`() {
         val scheduleId = 122L
         val inputScheduleDTO = ScheduleDTO(scheduleId, 2L, 1, "12:00", BigDecimal.valueOf(24), BigDecimal.valueOf(12))

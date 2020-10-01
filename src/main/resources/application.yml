@@ -16,14 +16,15 @@ spring:
     url: "jdbc:h2:mem:small_cinema_db"
     username: "small_cinema_db_user"
     password: "123sc456"
+  # Changes HTTP Basic Auth credentials
   security:
     user:
       name: "admin"
       password: "123sc456"
-      roles: "admin"
 
 #Small-cinema properties
 small-cinema:
+  # Changes OMDBApi key and urlTemplate
   omdbApi:
     key: "[your API key]"
     urlTemplate: "http://www.omdbapi.com/?apikey={0}&i={1}"
